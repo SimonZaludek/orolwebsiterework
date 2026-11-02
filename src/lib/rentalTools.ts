@@ -28,6 +28,7 @@ import cleaningPhoto from '$lib/assets/rental/hilti-cleaning.jpg';
 // for the hero where we have one. The Dedra has none yet, so its product shot
 // does both jobs.
 import productScheppach from '$lib/assets/rental/scheppach-miesacka.png';
+import productMixer50 from '$lib/assets/rental/mixer_station.png';
 import productHonda from '$lib/assets/rental/honda-hsm1390ietdr.png';
 import productDedra from '$lib/assets/rental/dedra-vybracna-zaba.png';
 import productDedraSaw from '$lib/assets/rental/table-saw.png';
@@ -41,6 +42,7 @@ import useHonda from '$lib/assets/rental/freza-frezovanie.webp';
 // Our own machine, photographed on site and cut out.
 import productSokkia from '$lib/assets/rental/nivelacny-pristroj.webp';
 import productSokkiaStaff from '$lib/assets/rental/Sokkia-meracia-lata.png';
+import useSokkiaStaff from '$lib/assets/rental/measuring-stick.png';
 import productMai from '$lib/assets/rental/mai-omietacka.png';
 import dedraLogo from '$lib/assets/logos/Dedra.png';
 import hermanLogo from '$lib/assets/logos/Herman.svg';
@@ -285,6 +287,29 @@ export const otherTools: RentalTool[] = [
 		image: useScheppach
 	},
 	{
+		slug: 'battipav-mixer-50-super',
+		match: 'MIXER 50 SUPER',
+		name: 'Miešač Nuova Battipav MIXER 50 SUPER',
+		model: 'MIXER 50 SUPER',
+		short: 'Miešač lepidiel',
+		category: 'Miešanie a betón',
+		lead: 'Jednofázový miešač s núteným obehom na lepidlá, malty, omietky, farby aj epoxidové živice. Mieša priamo v 65-litrovom vedre a sklopná hlava s motorom umožní vedro vymeniť bez rozoberania stroja. Oceľový rám na dvoch kolieskach ho udrží pojazdný po stavbe.',
+		uses: [
+			'Miešanie lepidiel na obklady a dlažbu',
+			'Príprava mált, omietok a samonivelačných zmesí',
+			'Farby a epoxidové živice, kde treba rovnomernú zmes'
+		],
+		specs: [
+			'PET vedro s objemom 65 l',
+			'Príkon 1200 W, výkon 750 W, 60 ot/min',
+			'Napájanie 230 V / 50 Hz, krytie IP 44'
+		],
+		brand: { name: 'Nuova Battipav', url: 'https://www.battipav.com' },
+		useImage: productMixer50,
+		productImage: productMixer50,
+		image: productMixer50
+	},
+	{
 		slug: 'honda-hsm1390i',
 		match: 'HSM1390i',
 		name: 'Snehová fréza Honda HSM1390i ETDR',
@@ -505,7 +530,7 @@ export const otherTools: RentalTool[] = [
 			'Stupnica s E-delením, odčítanie po 1 cm'
 		],
 		brand: { name: 'Sokkia', logo: sokkiaLogo },
-		useImage: productSokkiaStaff,
+		useImage: useSokkiaStaff,
 		productImage: productSokkiaStaff,
 		image: productSokkiaStaff
 	}

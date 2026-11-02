@@ -15,6 +15,10 @@
 	function fieldError(field: string): string | undefined {
 		return (form?.errors as Record<string, string> | undefined)?.[field];
 	}
+
+	function sendError(): string | undefined {
+		return (form as { sendError?: string } | undefined)?.sendError;
+	}
 </script>
 
 <svelte:head>
@@ -36,7 +40,7 @@
 					označené hviezdičkou sú povinné.
 				</p>
 			</header>
-			<a href={contact.phoneHref} rel="external" class="head-link-cell">{contact.phone}</a>
+			<div class="head-accent-cell" aria-hidden="true"></div>
 			<div class="acc acc--yellow" aria-hidden="true"></div>
 		</div>
 
@@ -210,14 +214,17 @@
 							{/if}
 						</div>
 
+						{#if sendError()}
+							<p class="error form-error" role="alert">
+								{sendError()} Prípadne nám napíšte na
+								<a href={contact.emailHref} rel="external">{contact.email}</a>.
+							</p>
+						{/if}
+
 						<div class="actions">
 							<button type="submit" class="submit" disabled={submitting}>
 								{submitting ? 'Odosielam…' : 'Odoslať požiadavku'}
 							</button>
-							<p class="hint">
-								Alebo nám zavolajte na <a href={contact.phoneHref} rel="external">{contact.phone}</a
-								>.
-							</p>
 						</div>
 					</form>
 				{/if}
@@ -299,26 +306,10 @@
 		line-height: 1.55;
 	}
 
-	.head-link-cell {
+	.head-accent-cell {
 		flex: 1 1 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		padding: 1rem;
 		background-color: var(--color-brand-primary);
-		color: var(--color-white);
-		font-family: var(--font-display);
-		font-size: 1.1rem;
-		font-weight: 600;
-		letter-spacing: 0.06em;
-		font-variant-numeric: tabular-nums;
-		text-align: center;
-		text-decoration: none;
-		transition: background-color var(--transition-fast);
-	}
-
-	.head-link-cell:hover {
-		background-color: var(--color-brand-hover);
 	}
 
 	/* Accent cells */
@@ -438,6 +429,12 @@
 		color: var(--color-error);
 	}
 
+	.form-error {
+		padding: 0.75rem 1rem;
+		border-left: 4px solid var(--color-error);
+		background-color: rgba(198, 40, 40, 0.07);
+	}
+
 	.actions {
 		display: flex;
 		align-items: center;
@@ -468,22 +465,6 @@
 	.submit:disabled {
 		opacity: 0.6;
 		cursor: progress;
-	}
-
-	.hint {
-		margin: 0;
-		font-size: 0.9rem;
-		color: var(--text-muted);
-	}
-
-	.hint a {
-		color: var(--color-brand-primary);
-		text-decoration: none;
-		font-weight: 600;
-	}
-
-	.hint a:hover {
-		text-decoration: underline;
 	}
 
 	/* ===== Success ===== */
@@ -592,7 +573,7 @@
 			padding: 1.25rem 1rem 1.4rem;
 		}
 
-		.head-link-cell {
+		.head-accent-cell {
 			padding: 0.9rem;
 		}
 

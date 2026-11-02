@@ -7,7 +7,7 @@ export default defineConfig({
 		sveltekit(),
 		svg({
 			// Scoped to the pictogram set only — brand logos under assets/logos and
-			// assets/orol_loga must keep resolving to plain asset URLs for <img src>.
+			// assets/orol_logos + used_orol_logos must keep resolving to plain asset URLs for <img src>.
 			includePaths: ['src/lib/assets/icons/'],
 			// Emit the artwork untouched, exactly as {@html} used to inline it.
 			svgoOptions: false

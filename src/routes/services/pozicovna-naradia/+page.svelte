@@ -48,6 +48,7 @@
 			alt: 'Strojová omietačka pripravená na použitie',
 			items: [
 				'Miešačka Scheppach MIX 180',
+				'Miešač Nuova Battipav MIXER 50 SUPER',
 				'Strojová omietačka MAI PUMP M4G economy',
 				'Ponorný vibrátor betónu Herman HVE 113',
 				'Vibračný stôl'
@@ -739,12 +740,12 @@
 	}
 
 	.equip-photo img {
+		position: absolute;
+		inset: 0;
 		display: block;
 		width: 100%;
-		height: auto;
-		max-height: 340px;
+		height: 100%;
 		object-fit: contain;
-		margin: auto;
 		filter: grayscale(100%) contrast(1.06);
 		transition:
 			filter var(--transition-medium),

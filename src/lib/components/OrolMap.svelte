@@ -1,6 +1,6 @@
 <script lang="ts">
 	import 'maplibre-gl/dist/maplibre-gl.css';
-	import orolMark from '$lib/assets/orol_loga/orol_all_white.svg';
+	import orolMark from '$lib/assets/used_orol_logos/orol_all_white.svg';
 
 	// OROL, spol. s r.o., Kpt. Nálepku 2218, Liptovský Mikuláš
 	const center: [number, number] = [19.6254822, 49.0835165];

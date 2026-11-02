@@ -875,8 +875,8 @@
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
 		grid-template-areas:
-			'copy copy copy copy copy copy copy photo photo photo photo photo'
-			'copy copy copy copy copy copy copy photo photo photo photo photo'
+			'copy copy copy copy copy photo photo photo photo photo photo photo'
+			'copy copy copy copy copy photo photo photo photo photo photo photo'
 			'yell yell white white red red red red red white2 white2 blue';
 		gap: 5px;
 		padding-bottom: 5px;

@@ -119,6 +119,7 @@
 			<div class="cta-cell" data-reveal {@attach reveal()}>
 				<h2 class="cta-title">{detail.cta ?? 'Záujem o materiál?'}</h2>
 				<div class="cta-actions">
+					<a href={resolve('/quote')} class="btn btn--white">Cenová ponuka</a>
 					<a href={contact.phoneHref} rel="external" class="cta-link cta-link--phone"
 						>{contact.phone}</a
 					>
@@ -378,6 +379,36 @@
 		gap: 0.75rem 2rem;
 	}
 
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.85rem 1.5rem;
+		font-family: var(--font-display);
+		font-size: 1.05rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.07em;
+		text-decoration: none;
+		transition:
+			background-color var(--transition-fast),
+			color var(--transition-fast);
+	}
+
+	.btn:focus-visible {
+		outline: 3px solid var(--color-white);
+		outline-offset: 3px;
+	}
+
+	.btn--white {
+		background-color: var(--color-white);
+		color: var(--color-brand-primary);
+	}
+
+	.btn--white:hover {
+		background-color: var(--color-chalk);
+	}
+
 	.cta-link {
 		font-family: var(--font-display);
 		font-size: 1.25rem;
@@ -470,6 +501,7 @@
 		}
 
 		.back-link,
+		.btn,
 		.cta-link {
 			transition: none;
 		}

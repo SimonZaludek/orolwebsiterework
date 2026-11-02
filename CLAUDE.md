@@ -36,7 +36,7 @@ bun run format       # auto-format with prettier
 
 ## Design System
 
-Color tokens are defined in `src/docs/Color_Palette.md`. Apply them as CSS custom properties:
+Color tokens are defined in `src/docs/Color_Palette.md` also look into DESIGN.md. Apply them as CSS custom properties:
 
 ```css
 --color-brand-primary: #c0281c; /* Orol Red — CTAs, links */

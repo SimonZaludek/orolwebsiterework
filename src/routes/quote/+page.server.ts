@@ -1,4 +1,5 @@
 import { fail, type Actions } from '@sveltejs/kit';
+import { sendQuoteEmail } from '$lib/server/email';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -30,14 +31,16 @@ export const actions: Actions = {
 			return fail(400, { values, errors });
 		}
 
-		// TODO: deliver this submission to the company inbox.
-		// Right now we only log on the server — no e-mail is sent.
-		// Pick one of:
-		//   - Resend / Mailgun / SendGrid (REST API, add API key to env)
-		//   - Cloudflare Email Routing + Worker
-		//   - Formspree / Web3Forms (point fetch() at their endpoint)
-		// and call it from here before returning success.
-		console.log('[quote] new submission', values);
+		try {
+			await sendQuoteEmail(values);
+		} catch (error) {
+			console.error('[quote] delivery failed', error);
+			return fail(502, {
+				values,
+				errors,
+				sendError: 'Požiadavku sa nepodarilo odoslať. Skúste to prosím znova alebo nám zavolajte.'
+			});
+		}
 
 		return { success: true };
 	}

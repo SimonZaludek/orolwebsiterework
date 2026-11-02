@@ -33,8 +33,8 @@
 </script>
 
 <script lang="ts">
-	import orolMark from '$lib/assets/orol_loga/orol_all_white.svg';
-	import orolMarkRaw from '$lib/assets/orol_loga/orol_all_white.svg?raw';
+	import orolMark from '$lib/assets/used_orol_logos/orol_all_white.svg';
+	import orolMarkRaw from '$lib/assets/used_orol_logos/orol_all_white.svg?raw';
 	import { company, contact } from '$lib/site';
 
 	// OROL, spol. s r.o., Kpt. Nálepku 2218, Liptovský Mikuláš

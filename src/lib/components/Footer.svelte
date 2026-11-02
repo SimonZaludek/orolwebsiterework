@@ -6,7 +6,7 @@
 	import FacebookIcon from './icons/FacebookIcon.svelte';
 	import GoogleMap from './GoogleMap.svelte';
 	import OrolMap from './OrolMap.svelte';
-	import logoMark from '$lib/assets/orol_loga/orol_all_white.svg';
+	import logoMark from '$lib/assets/used_orol_logos/orol_all_white.svg';
 
 	const useGoogleMap = Boolean(env.PUBLIC_GOOGLE_MAPS_KEY);
 </script>

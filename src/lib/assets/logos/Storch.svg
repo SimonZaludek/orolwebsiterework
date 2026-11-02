@@ -11,7 +11,7 @@
 	.st5{display:inline;fill:#FFFFFF;}
 	.st6{fill:none;stroke:#0069B4;stroke-width:1.2;}
 	.st7{fill:none;}
-	.st8{font-family:'ArialMT';}
+	.st8{font-family:'ArialMT', Arial, Helvetica, sans-serif;}
 	.st9{font-size:20.0321px;}
 	.st10{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#0069B4;stroke-width:1.2;}
 	.st11{fill:#1D1D1B;}

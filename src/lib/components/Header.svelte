@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import logo from '$lib/assets/orol_loga/orol_logo_all_white_with_text.svg';
-	import logoMark from '$lib/assets/orol_loga/orol_all_white.svg';
+	import logo from '$lib/assets/used_orol_logos/orol_logo_all_white_with_text.svg';
+	import logoMark from '$lib/assets/used_orol_logos/orol_all_white.svg';
 	import { navLinks, contact, socials } from '$lib/site';
 	import InstagramIcon from './icons/InstagramIcon.svelte';
 	import FacebookIcon from './icons/FacebookIcon.svelte';

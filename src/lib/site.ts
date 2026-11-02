@@ -41,7 +41,8 @@ export const navLinks = [
 	{ href: '/services/pozicovna-naradia', label: 'Požičovňa' },
 	{ href: '/products', label: 'Produkty' },
 	{ href: '/promotions', label: 'Akcie' },
-	{ href: '/news', label: 'Aktuality' },
+	// Aktuality hidden for now — uncomment to restore the link in header + footer.
+	// { href: '/news', label: 'Aktuality' },
 	{ href: '/gallery', label: 'Galéria' },
 	{ href: '/about', label: 'O nás' },
 	{ href: '/contact', label: 'Kontakt' }

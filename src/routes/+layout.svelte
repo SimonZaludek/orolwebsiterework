@@ -10,7 +10,7 @@
 	import '$lib/styles/globals.css';
 	import '$lib/styles/colors.css';
 	import '$lib/styles/tokens.css';
-	import orolStavebninyIcon from '$lib/assets/orol_white_fill_black_stroke_red_background_round_corners.svg';
+	import orolStavebninyIcon from '$lib/assets/used_orol_logos/orol_white_fill_black_stroke_red_background_round_corners.svg';
 	import { onNavigate } from '$app/navigation';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';

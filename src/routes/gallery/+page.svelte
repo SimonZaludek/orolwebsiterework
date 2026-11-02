@@ -8,6 +8,12 @@
 	} from '$lib/gallery';
 	import { reveal } from '$lib/reveal';
 
+	// The filter grid is four columns wide, so the categories rarely fill the last
+	// row exactly. Whatever they leave over becomes a De Stijl block instead of
+	// bare backdrop, the same way the rentals catalogue closes its grid.
+	const filterColumns = 4;
+	const filterFillSpan = (filterColumns - (galleryFilters.length % filterColumns)) % filterColumns;
+
 	let activeCategory = $state<GalleryFilter>('all');
 	let dialog = $state<HTMLDialogElement | null>(null);
 	let currentIndex = $state(0);
@@ -80,7 +86,7 @@
 	<title>Galéria predajne, skladu a realizácií – Stavebniny Orol</title>
 	<meta
 		name="description"
-		content="Pozrite si predajňu a sklad Stavebnín Orol v Ružomberku, vlastnú dopravu materiálu aj vybrané realizácie."
+		content="Pozrite si predajňu a sklad Stavebnín Orol v Liptovskom Mikuláši, vlastnú dopravu materiálu aj vybrané realizácie."
 	/>
 </svelte:head>
 
@@ -93,8 +99,8 @@
 					<h1 id="gallery-title" class="section-title">Predajňa, materiál a hotové stavby</h1>
 				</div>
 				<p class="head-copy">
-					Pozrite si náš sortiment, zázemie v Ružomberku a výber realizácií, pri ktorých sme
-					dodávali materiál a technické riešenia.
+					Pozrite si náš sortiment, zázemie v Liptovskom Mikuláši a výber realizácií, pri ktorých
+					sme dodávali materiál a technické riešenia.
 				</p>
 			</header>
 			<a href={resolve('/contact')} class="head-link-cell"
@@ -117,6 +123,14 @@
 						<small>{filter.count.toString().padStart(2, '0')}</small>
 					</button>
 				{/each}
+				{#if filterFillSpan > 0}
+					<div class="filter-fill" style:grid-column={`span ${filterFillSpan}`} aria-hidden="true">
+						<span class="ff ff--a"></span>
+						<span class="ff ff--b"></span>
+						<span class="ff ff--c"></span>
+						<span class="ff ff--d"></span>
+					</div>
+				{/if}
 			</div>
 		</nav>
 
@@ -158,7 +172,6 @@
 						<span class="lead-copy">
 							<small>Výber z kategórie</small>
 							<strong>{leadPhoto.title}</strong>
-							<span>{leadPhoto.alt}</span>
 							<i aria-hidden="true">Zväčšiť ↗</i>
 						</span>
 					</button>
@@ -243,7 +256,6 @@
 					<small>{currentCategory}</small>
 					<strong id="lightbox-title">{currentPhoto.title}</strong>
 				</div>
-				<p>{currentPhoto.alt}</p>
 				<span>{currentIndex + 1} / {visiblePhotos.length}</span>
 			</div>
 		</div>
@@ -384,6 +396,41 @@
 
 	.filter-options::-webkit-scrollbar {
 		display: none;
+	}
+
+	.filter-fill {
+		display: grid;
+		gap: 5px;
+		min-width: 0;
+		grid-template-columns: 1.15fr 0.6fr 0.8fr;
+		grid-template-rows: 1fr 0.85fr;
+		grid-template-areas:
+			'a b d'
+			'a c d';
+	}
+
+	.ff {
+		min-width: 0;
+		background-color: var(--color-white);
+	}
+
+	.ff--a {
+		grid-area: a;
+		background-color: var(--color-brand-primary);
+	}
+
+	.ff--b {
+		grid-area: b;
+	}
+
+	.ff--c {
+		grid-area: c;
+		background-color: var(--color-accent-yellow);
+	}
+
+	.ff--d {
+		grid-area: d;
+		background-color: var(--color-accent-blue);
 	}
 
 	.filter-options button {
@@ -579,13 +626,6 @@
 		text-transform: uppercase;
 	}
 
-	.lead-copy > span {
-		margin-top: 1rem;
-		font-size: 0.94rem;
-		line-height: 1.6;
-		color: var(--text-muted);
-	}
-
 	.lead-copy i {
 		margin-top: auto;
 		padding-top: 2rem;
@@ -686,6 +726,11 @@
 
 	.lightbox-image {
 		display: block;
+		/* Grid items default to `min-height: auto`, which would let the photo keep
+		   its intrinsic height and overflow the stage instead of honouring the
+		   max-height cap below. */
+		min-width: 0;
+		min-height: 0;
 		max-width: 100%;
 		max-height: 100%;
 		object-fit: contain;
@@ -749,7 +794,7 @@
 
 	.lightbox-caption {
 		display: grid;
-		grid-template-columns: minmax(11rem, 0.35fr) minmax(0, 1fr) auto;
+		grid-template-columns: minmax(0, 1fr) auto;
 		gap: 1.5rem;
 		align-items: center;
 		width: min(100%, 74rem);
@@ -777,13 +822,6 @@
 		font-family: var(--font-display);
 		font-size: 0.92rem;
 		text-transform: uppercase;
-	}
-
-	.lightbox-caption p {
-		margin: 0;
-		font-size: 0.86rem;
-		line-height: 1.4;
-		color: var(--color-mist);
 	}
 
 	.lightbox-caption > span {
@@ -840,6 +878,10 @@
 
 		.filter-options button {
 			min-width: 9.5rem;
+		}
+
+		.filter-fill {
+			display: none;
 		}
 
 		.stories,
@@ -925,10 +967,6 @@
 			grid-template-columns: 1fr auto;
 			gap: 0.75rem;
 			margin-top: 0.5rem;
-		}
-
-		.lightbox-caption p {
-			display: none;
 		}
 	}
 

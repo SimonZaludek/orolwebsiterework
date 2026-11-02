@@ -44,7 +44,7 @@
 			</div>
 		</div>
 
-		<div class="photo-cell" class:photo-cell--use={tool.useImage} data-reveal {@attach reveal(80)}>
+		<div class="photo-cell" data-reveal {@attach reveal(80)}>
 			<img
 				src={tool.useImage ?? tool.image}
 				alt={tool.useImage ? `${tool.model} pri práci` : tool.name}
@@ -326,46 +326,28 @@
 		position: relative;
 		overflow: hidden;
 		min-width: 0;
-		background-color: var(--color-onyx);
+		background-color: var(--color-white);
 	}
 
+	/* Tool photos arrive in wildly different ratios (2.2:1 panoramas through to
+	   portrait), so every one is fitted whole inside the cell rather than
+	   cropped to it — the cell is the fixed rectangle, the picture scales to
+	   sit inside it. They rest monochrome and take their colour on hover. */
 	.photo-cell img {
 		position: absolute;
 		inset: 0;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
+		padding: clamp(0.5rem, 1.5vw, 1.25rem);
+		box-sizing: border-box;
 		filter: grayscale(100%) contrast(1.06);
-		transition:
-			filter var(--transition-medium),
-			transform var(--transition-medium);
+		transition: filter var(--transition-medium);
 	}
 
 	@media (hover: hover) {
 		.photo-cell:hover img {
 			filter: grayscale(0%) contrast(1.02);
-			transform: scale(1.02);
-		}
-	}
-
-	/* Manufacturer in-use photos stay in colour — the point is to show the
-	   tool itself, not to set a mood like our own site photography does.
-	   They also come in wildly different ratios (2.2:1 panoramas through to
-	   portrait), so they are fitted whole rather than cropped to the cell. */
-	.photo-cell--use {
-		background-color: var(--color-white);
-	}
-
-	.photo-cell--use img {
-		filter: none;
-		object-fit: contain;
-		padding: clamp(0.5rem, 1.5vw, 1.25rem);
-		box-sizing: border-box;
-	}
-
-	@media (hover: hover) {
-		.photo-cell--use:hover img {
-			transform: none;
 		}
 	}
 
